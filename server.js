@@ -15,5 +15,5 @@ app.use(bodyParser.json());
 
 // Starts the server to listen on port
 app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT ". If on local host, you can click http://localhost: " + PORT);
+    console.log("App listening on PORT " + PORT + ". If on local host, you can click http://localhost: " + PORT);
 });
