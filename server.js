@@ -3,15 +3,18 @@
 // Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
-
-// Setting up the Express App
+var exphbs = require("express-handlebars");
 var app = express();
-var PORT = process.env.PORT || 8080;
+var routes = require("./controllers/burgers_controller.js");
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
-// parse application/json
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+app.use(routes);
+
+var PORT = process.env.PORT || 8080;
 
 // Starts the server to listen on port
 app.listen(PORT, function() {
